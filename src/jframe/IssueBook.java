@@ -105,7 +105,7 @@ public class IssueBook extends javax.swing.JFrame {
       }
       
       
-       //Updating CountBook
+       //Book exist
       public Boolean AlreadyExistBookStudent(){
           
           boolean alreadyIssued = false;
