@@ -574,14 +574,14 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/AddNewBookIcons/icons8_Student_Male_100px.png"/>
+                  <Image iconType="3" name="/AddNewBookIcons/icons8_Student_Registration_100px_2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Student Detail"/>
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="60" y="40" width="280" height="70"/>
+                  <AbsoluteConstraints x="60" y="30" width="280" height="90"/>
                 </Constraint>
               </Constraints>
             </Component>

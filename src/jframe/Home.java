@@ -14,6 +14,15 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import java.awt.Color;
+import javax.swing.*;
+
 /**
  *
  * @author samuel Njoya
@@ -139,14 +148,31 @@ public class Home extends javax.swing.JFrame {
       
    public void showPieChart(){
        // created dataset
-   /*    DefaultPieDataSet barDataSet = new DefaultPieDataSet();
-       barDataSet.setValue("Iphone 5s", new Double(20));
+       DefaultPieDataset barDataSet = new DefaultPieDataset();
+      /* barDataSet.setValue("Iphone 5s", new Double(20));
        barDataSet.setValue("Ip 5s", new Double(20));
        barDataSet.setValue("Moto 5s", new Double(40));
-       barDataSet.setValue("Iphon 5s", new Double(10));
+       barDataSet.setValue("Iphon 5s", new Double(10));*/
+      //Manage Student
+    
+       try {
+            Connection con = DBconnexion.getConnection();
+            String sql = "select name_book, count(*) as issue_count from issue_book group by id_book";
+            PreparedStatement ps = con.prepareStatement(sql);
+           
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+               barDataSet.setValue(rs.getString("name_book"), new Double(rs.getDouble("issue_count")));
+           }
+            
+       } catch (Exception e) {
+           JOptionPane.showMessageDialog(this, e);
+       }
+   
        
        //create chart
-       JFreeChart piechart = ChartFactory.createPiedChart("mobile sale",barDataSet, false,true,false);
+       JFreeChart piechart = ChartFactory.createPieChart("issue_book",barDataSet, true,true,false);
        
        PiePlot piePlot = (PiePlot) piechart.getPlot();
        
@@ -162,7 +188,7 @@ public class Home extends javax.swing.JFrame {
        ChartPanel barChartPanel = new ChartPanel(piechart);
        panelBarChart.removeAll();
        panelBarChart.add(barChartPanel, BorderLayout.CENTER);
-       panelBarChart.validate();*/
+       panelBarChart.validate();
    }
    
    
@@ -463,7 +489,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 280, 41));
 
-        jPanel6.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel6.setBackground(new java.awt.Color(255, 102, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1045,7 +1071,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel5.add(jPanel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 140, 110));
 
-        jPanel71.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 0, 51)));
+        jPanel71.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 102, 0)));
 
         lbl_nbr_book.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lbl_nbr_book.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Books_26px.png"))); // NOI18N
@@ -1070,7 +1096,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel5.add(jPanel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 150, 110));
 
-        jPanel72.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 0, 51)));
+        jPanel72.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 102, 0)));
 
         lbl_issue_book.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lbl_issue_book.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Sell_26px.png"))); // NOI18N
